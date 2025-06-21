@@ -6,6 +6,8 @@ import listOfFiltredProducts from '../services/listOfFilteredProducts.jsx';
 import listOfFiltredProductsWithProps from '../services/listOfFiltredProductsWithProps.jsx'
 import listOfFiltredProductsWithPropsArray from '../services/listOfFiltredProductsWithPropsArray.jsx'
 import listOfFiltredProductsWithPropsObject from '../services/listOfFiltredProductsWithPropsObject.jsx'
+import SearchBarAndFilters from '../components/SearchBarAndFilters.jsx';
+import ListOfFiltredProducts from '../components/ListOfFiltredProducts.jsx';
 
 export default function Home3() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,39 +26,19 @@ export default function Home3() {
         <h1 className="text-3xl font-bold text-primary">Produtos</h1>
 
         {/* 🔎 Barra de busca e filtros */}
-        <div className="flex flex-wrap gap-4">
-          <input
-            type="text"
-            placeholder="Buscar produto..."
-            className="border rounded px-4 py-2 w-full sm:w-60"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-
-          <select
-            className="border rounded px-4 py-2"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option>Todos</option>
-            <option>Eletrônicos</option>
-            <option>Roupas</option>
-            <option>Livros</option>
-          </select>
-
-          <select
-            className="border rounded px-4 py-2"
-            value={priceRange}
-            onChange={(e) => setPriceRange(e.target.value)}
-          >
-            <option value="Todos">Preço (Todos)</option>
-            <option value="0-50">Até R$50</option>
-            <option value="51-100">R$51–100</option>
-            <option value="100+">Acima de R$100</option>
-          </select>
-        </div>
+        <SearchBarAndFilters 
+          searchTerm={searchTerm} setSearchTerm={setSearchTerm}
+          category={category}     setCategory={setCategory}
+          priceRange={priceRange} setPriceRange={setPriceRange}
+        />
 
         {/* 🛒 Lista de produtos filtrados */}
+        <ListOfFiltredProducts 
+          products2={products2} 
+          searchTerm={searchTerm} 
+          category={category} 
+          priceRange={priceRange}
+        />
         {listOfFiltredProducts(products2, searchTerm, category, priceRange)}
         {listOfFiltredProductsWithProps(Props)}
         {listOfFiltredProductsWithPropsArray(PropsArray)}
