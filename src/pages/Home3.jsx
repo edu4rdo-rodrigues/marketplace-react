@@ -4,13 +4,18 @@ import products2 from '../data/products2.js'; // você deve ter esse array
 import { Link } from 'react-router-dom';
 import listOfFiltredProducts from '../services/listOfFilteredProducts.jsx';
 import listOfFiltredProductsWithProps from '../services/listOfFiltredProductsWithProps.jsx'
+import listOfFiltredProductsWithPropsArray from '../services/listOfFiltredProductsWithPropsArray.jsx'
+import listOfFiltredProductsWithPropsObject from '../services/listOfFiltredProductsWithPropsObject.jsx'
 
 export default function Home3() {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('Todos');
   const [priceRange, setPriceRange] = useState('Todos');
+  const propsDescription = 'products2, searchTerm, category, priceRange';
 
   const Props = [products2, searchTerm, category, priceRange]
+  const PropsArray = [products2, searchTerm, category, priceRange, propsDescription]
+  const PropsObject = {products2: products2, searchTerm: searchTerm, category: category, priceRange: priceRange}
 
   return (
     <>
@@ -54,6 +59,8 @@ export default function Home3() {
         {/* 🛒 Lista de produtos filtrados */}
         {listOfFiltredProducts(products2, searchTerm, category, priceRange)}
         {listOfFiltredProductsWithProps(Props)}
+        {listOfFiltredProductsWithPropsArray(PropsArray)}
+        {listOfFiltredProductsWithPropsObject(PropsObject)}
         
       </div>
       <main className="max-w-7xl mx-auto px-4 py-10">

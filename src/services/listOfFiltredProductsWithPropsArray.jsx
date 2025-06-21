@@ -21,7 +21,7 @@ export default function listOfFiltredProductsWithProps(Props) {
   return (
     <>
       {/* 🛒 Lista de produtos filtrados */}
-      Produto como Props
+      Produto como Props Array
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {filteredProducts.map((product) => (
             <Link

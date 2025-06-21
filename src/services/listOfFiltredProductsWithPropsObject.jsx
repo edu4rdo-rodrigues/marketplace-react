@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
 export default function listOfFiltredProductsWithProps(Props) {
-  const [products2, searchTerm, category, priceRange] = Props
-  console.log('Props: ', Props);
-  
+  const {products2, searchTerm, category, priceRange} = Props
+  console.log('Props: ', Props);  
 
   // 🔍 Filtragem
   const filteredProducts = products2.filter((product) => {
@@ -21,7 +20,7 @@ export default function listOfFiltredProductsWithProps(Props) {
   return (
     <>
       {/* 🛒 Lista de produtos filtrados */}
-      Produto como Props
+      Produto como Props Object
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {filteredProducts.map((product) => (
             <Link
